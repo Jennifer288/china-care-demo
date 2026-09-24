@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@theme {
+  --color-ink: #163b51;
+  --color-accent: #337577;
+  --font-sans: Arial, "Helvetica Neue", sans-serif;
+}
+@layer base {
+  [id] {
+    scroll-margin-top: 110px;
+  }
+  body {
+    @apply m-0 bg-white text-ink antialiased;
+  }
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button,
+  a {
+    @apply transition-colors;
+  }
+  button:not(:disabled),
+  select {
+    @apply cursor-pointer;
+  }
+  button:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-4 outline-accent;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply text-ink;
+  }
+  input,
+  select,
+  textarea {
+    @apply min-w-0;
+  }
+}
+@layer components {
+  .wrap {
+    @apply max-w-[1240px] mx-auto px-6 md:px-10;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-3 rounded-md bg-ink px-6 py-3.5 text-sm font-medium text-white hover:bg-[#28586d] transition-colors;
+  }
+  .btn.small {
+    @apply px-4 py-3 text-xs;
+  }
+  .btn.secondary {
+    @apply border border-[#cbd7dd] bg-transparent text-ink hover:bg-[#edf4f5];
+  }
+  .eyebrow {
+    @apply text-[10px] md:text-[11px] uppercase tracking-[2.4px] font-semibold text-[#4b7a80];
+  }
+  .serif {
+    font-family: Georgia, "Times New Roman", "Songti SC", serif;
+  }
+  .section {
+    @apply py-16 md:py-23;
+  }
+  .section-title {
+    @apply text-inherit text-3xl md:text-[42px] leading-[1.15] tracking-[-1px];
+    font-family: Georgia, "Times New Roman", "Songti SC", serif;
+  }
+  .muted {
+    @apply text-[#6b7e89] text-sm leading-7;
+  }
+  .card {
+    @apply border border-[#dfe8eb] rounded-xl bg-white overflow-hidden transition-shadow hover:shadow-lg hover:shadow-[#173c5010];
+  }
+  .field {
+    @apply flex flex-col gap-2 text-sm font-medium;
+  }
+  .input {
+    @apply w-full rounded-md border border-[#cfdbdf] bg-white px-3.5 py-3 text-sm text-ink outline-none focus:border-accent focus:ring-2 focus:ring-[#33757720];
+  }
+  .notice {
+    @apply border border-[#d4e2e4] bg-[#f0f7f7] rounded-lg p-4 text-sm leading-6;
+  }
+  .tag {
+    @apply text-[10px] bg-[#f1f6f6] text-[#55757c] rounded px-2 py-1 inline-flex;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    animation: appear 0.6s ease-out both;
+  }
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

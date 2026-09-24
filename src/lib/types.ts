@@ -1,0 +1,43 @@
+export type User = {
+  id: string;
+  email: string;
+  full_name: string;
+  country: string;
+  preferred_language: string;
+  admin: boolean;
+};
+export type MedicalFile = {
+  pending_delete?: boolean;
+  id: string;
+  case_id: string;
+  user_id: string;
+  file_name: string;
+  file_type: string;
+  category: string;
+  file_size: number;
+  storage_path: string;
+  created_at: string;
+};
+export type MedicalCase = {
+  id: string;
+  user_id: string;
+  full_name: string;
+  date_of_birth: string;
+  gender: string;
+  nationality: string;
+  current_country: string;
+  main_condition: string;
+  diagnosis: string;
+  symptoms: string;
+  duration?: string;
+  previous_surgeries?: string;
+  preferred_goal?: string;
+  previous_treatment: string;
+  medication: string;
+  allergies: string;
+  status: string;
+  created_at: string;
+  submitted_at?: string;
+  files: MedicalFile[];
+  coordinator_notes?: string;
+};

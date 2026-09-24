@@ -1,0 +1,16 @@
+export const fieldList = [
+  ["full_name", "Name", "姓名"],
+  ["date_of_birth", "Date of birth", "出生日期"],
+  ["gender", "Gender", "性别"],
+  ["nationality", "Nationality", "国籍"],
+  ["current_country", "Current country", "现居国家"],
+  ["main_condition", "Main condition", "主要病情"],
+  ["diagnosis", "Current diagnosis", "现有诊断"],
+  ["symptoms", "Symptoms", "症状"],
+  ["duration", "Duration", "持续时间"],
+  ["previous_surgeries", "Previous surgeries", "既往手术"],
+  ["preferred_goal", "Preferred goal", "希望获得的帮助"],
+  ["previous_treatment", "Previous treatment", "既往治疗"],
+  ["medication", "Current medication", "当前用药"],
+  ["allergies", "Allergies", "过敏史"],
+];
