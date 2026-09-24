@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { isSharePreview } from "@/lib/share-preview";
 import { useState } from "react";
 import {
   ArrowLeft,
@@ -84,10 +85,15 @@ export function CasePreview({ fields }: PreviewProps) {
               {t("Explore the process — no login needed", "免登录查看申请流程")}
             </p>
             <p className="text-xs mt-1">
-              {t(
-                "This walkthrough uses fictional examples. Nothing is saved or submitted. Log in when you are ready to use your own records.",
-                "以下使用虚构示例展示流程，不会保存或提交资料。准备使用自己的病历时，再登录即可。",
-              )}
+              {isSharePreview
+                ? t(
+                    "This public walkthrough uses fictional examples only. Nothing is saved or submitted; registration and real uploads are not available in this version.",
+                    "公开参考版仅使用虚构示例，不会保存或提交资料，此版本不开放注册或真实上传。",
+                  )
+                : t(
+                    "This walkthrough uses fictional examples. Nothing is saved or submitted. Log in when you are ready to use your own records.",
+                    "以下使用虚构示例展示流程，不会保存或提交资料。准备使用自己的病历时，再登录即可。",
+                  )}
             </p>
           </div>
         </div>
@@ -243,25 +249,39 @@ export function CasePreview({ fields }: PreviewProps) {
                   )}
                 </p>
               </div>
-              <div className="mt-7">
-                <h3 className="font-semibold mb-2">
-                  {t("Ready to start your own case?", "准备开始自己的申请？")}
-                </h3>
-                <p className="muted text-xs mb-4">
-                  {t(
-                    "Create an account or log in to enter your information and securely upload records.",
-                    "注册或登录后，即可填写自己的资料并安全上传病历。",
-                  )}
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  <Link href="/register" className="btn">
-                    {t("Create account", "注册账号")}
-                  </Link>
-                  <Link href="/login" className="btn secondary">
-                    {t("Log in to start", "登录后开始")}
+              {isSharePreview ? (
+                <div className="notice mt-7">
+                  <p>
+                    {t(
+                      "You have reached the end of the demonstration. No case has been created or submitted.",
+                      "您已查看完整演示流程，没有创建或提交任何真实病例。",
+                    )}
+                  </p>
+                  <Link href="/" className="btn secondary mt-4">
+                    {t("Back to home", "返回首页")}
                   </Link>
                 </div>
-              </div>
+              ) : (
+                <div className="mt-7">
+                  <h3 className="font-semibold mb-2">
+                    {t("Ready to start your own case?", "准备开始自己的申请？")}
+                  </h3>
+                  <p className="muted text-xs mb-4">
+                    {t(
+                      "Create an account or log in to enter your information and securely upload records.",
+                      "注册或登录后，即可填写自己的资料并安全上传病历。",
+                    )}
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    <Link href="/register" className="btn">
+                      {t("Create account", "注册账号")}
+                    </Link>
+                    <Link href="/login" className="btn secondary">
+                      {t("Log in to start", "登录后开始")}
+                    </Link>
+                  </div>
+                </div>
+              )}
             </>
           )}
         </div>
